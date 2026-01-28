@@ -3,8 +3,12 @@ VERSION:3.0
 N:Klein;Maciek;;;
 FN:Maciek Klein
 TITLE:Business Development & Strategic Partnerships
-EMAIL;TYPE=INTERNET,PREF:maciekklein@gmail.com
-TEL;TYPE=CELL,PREF:+4917646540346
-ADR;TYPE=WORK:;;;Berlin;;Germany
+TEL;TYPE=CELL,VOICE:+4917646540346
+EMAIL;TYPE=INTERNET,WORK:maciekklein@gmail.com
+ADR;TYPE=WORK:;;;Berlin;;;Germany
+URL:https://maciek-kl.github.io/
 URL:https://www.linkedin.com/in/maciek-klein/
+Berlin-based
+UID:maciek-kl-contact
+REV:20260128T000000Z
 END:VCARD
