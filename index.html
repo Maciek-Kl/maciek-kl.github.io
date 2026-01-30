@@ -3,235 +3,288 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maciek Klein — Connect</title>
-  <meta name="robots" content="noimageindex" />
+  <title>Maciek Klein — Venture Builder</title>
+  <meta name="robots" content="noindex" />
 
-  <!-- Font: Inter (clean, modern, highly legible) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      /* Brand system */
-      --navy: #0F172A;            /* “Klein navy” */
-      --navy-2: #111C33;          /* slightly lifted navy */
-      --accent: #2563EB;          /* blue-600 */
-      --accent-2:#1D4ED8;         /* blue-700 */
-      --bg: #F6F8FC;              /* bright, professional */
-      --card: #FFFFFF;
-      --text: #0B1220;
-      --muted:#55637A;
-      --border: rgba(15,23,42,.10);
-      --shadow: 0 18px 45px rgba(15,23,42,.10);
-      --radius: 18px;
+    :root {
+      /* STRATEGY A: BIO-LUMINESCENT PALETTE */
+      /* Background: Deep Gunmetal (Not pitch black) */
+      --bg-dark: #020408; 
+      --bg-gradient-1: #0f172a; /* Slate 900 */
+      
+      /* Card: Frosted Clinical Glass */
+      --card-bg: rgba(15, 23, 42, 0.6);
+      --glass-blur: 24px;
+      
+      /* Text Colors */
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      
+      /* THE ACCENT: "MedTech Teal" Gradient */
+      /* Signals: Health, Biology, Innovation, Precision */
+      --accent-1: #2DD4BF; /* Teal 400 */
+      --accent-2: #0EA5E9; /* Sky 500 */
+      
+      --glow-color: rgba(45, 212, 191, 0.25); /* Teal Glow */
+
+      /* Premium UI Borders */
+      --border-light: rgba(255, 255, 255, 0.06);
+      --border-highlight: rgba(255, 255, 255, 0.12);
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:
-        radial-gradient(900px 520px at 20% 5%, rgba(37,99,235,.10), transparent 60%),
-        radial-gradient(700px 420px at 85% 85%, rgba(15,23,42,.08), transparent 55%),
-        var(--bg);
-      color: var(--text);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
     }
 
-    .wrap{ width:min(560px, 100%); }
-
-    .panel{
-      background: var(--card);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
+    /* BACKGROUND: The "Northern Lights" Effect */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.5;
+    }
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: var(--accent-1);
+      top: -10%; left: -10%;
+      opacity: 0.15;
+    }
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: #3B82F6;
+      bottom: -10%; right: -10%;
+      opacity: 0.12;
     }
 
-    /* Top brand bar (subtle, not heavy) */
-    .brandbar{
-      background: linear-gradient(90deg, rgba(15,23,42,1), rgba(17,28,51,1));
-      padding:18px 22px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .mk{
-      width:42px;height:42px;
-      border-radius:12px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      color:#fff;
-      font-weight:700;
-      letter-spacing:.5px;
-      flex:0 0 auto;
-    }
-    .brandtext{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width:0;
-    }
-    .brandtext h1{
-      margin:0;
-      font-size:18px;
-      line-height:1.15;
-      color:#fff;
-      font-weight:700;
-      letter-spacing:.2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .brandtext p{
-      margin:0;
-      font-size:13px;
-      color: rgba(234,240,255,.80);
-      font-weight:500;
+    .wrap {
+      width: 100%;
+      max-width: 400px; /* Slimmer = More Mobile Premium */
+      perspective: 1000px;
     }
 
-    .content{
-      padding:22px;
+    /* CARD DESIGN */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-highlight); /* Top light highlight */
+      border-radius: 28px;
+      padding: 36px 28px;
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      box-shadow: 
+        0 24px 48px -12px rgba(0,0,0,0.7), /* Deep drop shadow */
+        0 0 0 1px rgba(255,255,255,0.03) inset; /* Inner subtle rim */
+      
+      /* Smooth fade in */
+      animation: floatUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    .headline{
-      margin:0 0 10px 0;
-      font-size:22px;
-      font-weight:700;
-      letter-spacing:-0.2px;
-      color: var(--navy);
-    }
-    .sub{
-      margin:0 0 14px 0;
-      color: var(--muted);
-      font-size:14px;
-      line-height:1.5;
+    @keyframes floatUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin: 0 0 16px 0;
-    }
-    .chip{
-      font-size:12px;
-      font-weight:600;
-      color: rgba(15,23,42,.78);
-      background: rgba(15,23,42,.04);
-      border: 1px solid rgba(15,23,42,.08);
-      padding:7px 10px;
-      border-radius: 999px;
-    }
-
-    .actions{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      margin-top:8px;
-    }
-    a.btn{
-      text-decoration:none;
-      border-radius: 14px;
-      padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      font-weight:700;
-      letter-spacing:.15px;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--navy);
-      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
-    }
-    a.btn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 10px 25px rgba(15,23,42,.10);
-      border-color: rgba(37,99,235,.18);
+    /* HEADER */
+    .header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 28px; }
+    
+    .monogram {
+      width: 60px; height: 60px;
+      /* Subtle gradient background for the logo */
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+      border: 1px solid var(--border-highlight);
+      border-radius: 18px;
+      display: flex;
+      align-items: center; justify-content: center;
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px;
+      color: var(--text-main);
+      margin-bottom: 18px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
 
-    a.btn.primary{
-      background: linear-gradient(180deg, rgba(37,99,235,1), rgba(29,78,216,1));
-      color:#fff;
-      border-color: rgba(29,78,216,.55);
-    }
-    a.btn.primary:hover{
-      box-shadow: 0 14px 32px rgba(37,99,235,.22);
-      border-color: rgba(29,78,216,.70);
-    }
-
-    .meta{
-      margin-top:18px;
-      padding-top:14px;
-      border-top:1px solid rgba(15,23,42,.08);
-      color: var(--muted);
-      font-size:13px;
-      line-height:1.55;
-      text-align:center;
-    }
-    .meta a{ color: var(--muted); }
-    .meta a:hover{ color: var(--navy); }
-
-    .tiny{
-      display:block;
-      margin-top:6px;
-      font-size:12px;
-      opacity:.9;
+    h1 {
+      margin: 0;
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      background: linear-gradient(to bottom right, #fff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* Accessibility */
-    a:focus-visible{
-      outline: 3px solid rgba(37,99,235,.35);
-      outline-offset: 2px;
-      border-radius: 14px;
+    .role-title {
+      margin: 10px 0 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
+
+    /* TAGS: The "Bio" Look */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 28px 0;
+    }
+
+    .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-light);
+      padding: 8px 14px;
+      border-radius: 100px;
+      transition: all 0.2s;
+    }
+
+    /* Highlighting the "Profitability" metric */
+    .tag.highlight {
+      border-color: rgba(45, 212, 191, 0.3);
+      background: rgba(45, 212, 191, 0.08);
+      color: #2DD4BF; /* Teal Text */
+      box-shadow: 0 0 15px rgba(45, 212, 191, 0.1);
+    }
+
+    /* BUTTONS */
+    .actions { display: grid; gap: 14px; }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    /* Primary Button: Teal Gradient */
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #0f172a; /* Dark text on bright button for contrast */
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 20px var(--glow-color);
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--glow-color);
+      filter: brightness(1.1);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .meta-row a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+    .meta-row a:hover { color: #fff; }
+
+    .location {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.3);
+      margin-top: 16px;
+    }
+
+    .icon { width: 18px; height: 18px; fill: currentColor; }
   </style>
 </head>
 
 <body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
   <div class="wrap">
-    <div class="panel">
-      <div class="brandbar">
-        <div class="mk">MK</div>
-        <div class="brandtext">
-          <h1>Maciek Klein</h1>
-          <p>Business Development & Strategic Partnerships</p>
-        </div>
+    <div class="card">
+      
+      <div class="header">
+        <div class="monogram">MK</div>
+        <h1>Maciek Klein</h1>
+        <p class="role-title">Commercial Scaling &amp; Venture Building</p>
       </div>
 
-      <div class="content">
-        <h2 class="headline">Connect</h2>
-        <p class="sub">Enterprise GTM · Tech-enabled products · Regulated markets</p>
-
-        <div class="chips">
-          <span class="chip">MedTech</span>
-          <span class="chip">Health Data</span>
-          <span class="chip">Partnerships</span>
-          <span class="chip">Go-to-market</span>
-        </div>
-
-        <div class="actions">
-          <a class="btn primary" href="./contact.vcf">Save contact (vCard)</a>
-          <a class="btn" href="https://www.linkedin.com/in/maciek-klein/?utm_source=businesscard&utm_medium=qr&utm_campaign=connect"
-             target="_blank" rel="noopener">Open LinkedIn</a>
-        </div>
-
-        <div class="meta">
-          Berlin, Germany · <a href="mailto:maciekklein@gmail.com">maciekklein@gmail.com</a> ·
-          <a href="tel:+4917646540346">+49 176 46540346</a>
-          <span class="tiny">If you scanned a QR: you’re in the right place.</span>
-        </div>
+      <div class="tags">
+        <span class="tag">Series A Readiness</span>
+        <span class="tag">RevOps</span>
+        <span class="tag">MedTech</span>
+        <span class="tag highlight">Profitability</span>
       </div>
+
+      <div class="actions">
+        <a class="btn primary" href="./contact.vcf">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          Save Contact
+        </a>
+
+        <a class="btn secondary" href="https://www.linkedin.com/in/maciek-klein/" target="_blank">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn Profile
+        </a>
+      </div>
+
+      <div class="footer">
+        <div class="meta-row">
+          <a href="mailto:maciekklein@gmail.com">Email</a>
+          <span>•</span>
+          <a href="tel:+4917646540346">Phone</a>
+        </div>
+        <div class="location">BERLIN • EU • GLOBAL</div>
+      </div>
+
     </div>
   </div>
 </body>
