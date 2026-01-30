@@ -4,242 +4,264 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Maciek Klein — Connect</title>
-  <meta name="description" content="Business Development & Strategic Partnerships — Tech-enabled products in regulated markets. Save contact, open LinkedIn." />
+  <meta name="description" content="Business Development & Strategic Partnerships. Save contact." />
   <meta name="robots" content="noimageindex" />
 
-  <!-- Typography: clean + premium -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      /* BRAND SYSTEM (aligned w/ your portfolio slide) */
-      --navy:#0F172A;          /* Tailwind slate-900 (left panel) */
-      --midnight:#0B1220;      /* deeper background */
-      --card:rgba(15,23,42,.72);
-      --text:#EAF0FF;
-      --muted:#A9B7D6;
-
-      /* Accent: keep ONE primary accent for consistency */
-      --accent:#2563EB;        /* “Klein Blue” (Tailwind blue-600) */
-      --accentSoft:rgba(37,99,235,.14);
-
-      --border:rgba(255,255,255,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-
-      --r:18px;
+    :root {
+      /* PALETTE: Deep Obsidian & Electric Cobalt */
+      --bg-dark: #05070A;
+      --bg-navy: #0F172A;
+      --card-bg: rgba(18, 24, 38, 0.7);
+      
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      
+      /* The "Accelerator" Blue - Vibrant but controlled */
+      --accent: #3B82F6; 
+      --accent-glow: rgba(59, 130, 246, 0.4);
+      
+      /* Premium UI Tokens */
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.15);
+      --glass-blur: 20px;
+      --radius: 24px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-
-      background:
-        radial-gradient(900px 600px at 18% 12%, rgba(37,99,235,.18), transparent 60%),
-        radial-gradient(800px 520px at 82% 88%, rgba(56,189,248,.10), transparent 55%),
-        linear-gradient(180deg, var(--midnight) 0%, var(--navy) 100%);
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden; /* Prevents scroll on mobile */
     }
 
-    .wrap{ width:min(560px, 100%); }
-
-    .panel{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      position:relative;
-      overflow:hidden;
+    /* Cinematic Background Mesh */
+    .ambient-light {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 15% 15%, rgba(20, 30, 60, 1) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
     }
 
-    /* subtle “product” highlight */
-    .panel::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(420px 220px at 20% 0%, rgba(37,99,235,.25), transparent 60%),
-        radial-gradient(420px 220px at 90% 70%, rgba(37,99,235,.14), transparent 65%);
-      pointer-events:none;
-      opacity:.9;
-      filter: blur(0px);
+    .wrap {
+      width: 100%;
+      max-width: 420px; /* Tighter width for mobile elegance */
+      perspective: 1000px;
     }
 
-    .panel > *{ position:relative; z-index:1; }
-
-    .top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:16px;
+    /* THE CARD: Glassmorphism 2.0 */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-highlight); /* Light hitting top edge */
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      box-shadow: 
+        0 20px 40px -10px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.05) inset; /* Inner glow */
+      
+      /* Entry Animation */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .mark{
-      display:inline-flex;
-      width:46px; height:46px;
-      border-radius: 14px;
-      align-items:center; justify-content:center;
-      background: var(--accentSoft);
-      border: 1px solid rgba(37,99,235,.35);
-      color: var(--text);
-      font-weight: 800;
-      letter-spacing: .4px;
-      user-select:none;
+    @keyframes floatUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    h1{
-      margin: 10px 0 0;
-      font-family: Fraunces, ui-serif, Georgia, serif;
-      font-size: 30px;
-      line-height: 1.05;
-      letter-spacing: .2px;
+    /* HEADER SECTION */
+    .header { text-align: center; margin-bottom: 24px; }
+    
+    .monogram {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      border: 1px solid var(--border-highlight);
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      font-family: 'Instrument Serif', serif;
+      font-size: 24px;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .role{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14.5px;
-      line-height: 1.45;
-    }
-    .role b{ color: var(--text); font-weight: 650; }
-
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:14px;
-    }
-    .chip{
-      font-size: 12px;
-      color: rgba(234,240,255,.92);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      padding: 7px 10px;
-      border-radius: 999px;
-      letter-spacing: .2px;
-      white-space:nowrap;
+    h1 {
+      margin: 0;
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
-    .actions{
-      margin-top: 18px;
-      display:grid;
+    .role-title {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    /* TECH TAGS */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em; /* Premium Wide Tracking */
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 12px;
+      border-radius: 100px;
+    }
+
+    /* ACTIONS */
+    .actions { display: grid; gap: 12px; }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
-    }
-
-    a.btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      text-decoration:none;
-      padding: 12px 14px;
+      padding: 14px;
       border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      font-weight: 650;
-      letter-spacing: .15px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      outline:none;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    a.btn.primary{
-      background: rgba(37,99,235,.18);
-      border-color: rgba(37,99,235,.45);
+    /* Primary Button: The "Accelerator" Glow */
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--accent-glow);
     }
 
-    a.btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-    }
-    a.btn.primary:hover{
-      background: rgba(37,99,235,.24);
-      border-color: rgba(37,99,235,.55);
+    /* Secondary Button */
+    .btn.secondary {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
     }
 
-    a.btn:focus-visible{
-      box-shadow: 0 0 0 4px rgba(37,99,235,.25);
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
     }
 
-    .meta{
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-      text-align:center;
+    /* FOOTER METADATA */
+    .footer {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
     }
-    .meta a{
-      color: var(--muted);
-      text-decoration:none;
-      border-bottom: 1px solid rgba(255,255,255,.18);
-    }
-    .meta a:hover{ color: var(--text); border-bottom-color: rgba(255,255,255,.35); }
 
-    .tiny{
-      display:block;
-      margin-top: 7px;
+    .meta-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
       font-size: 12px;
-      opacity: .92;
+      color: var(--text-muted);
+      margin-bottom: 8px;
     }
 
-    @media (prefers-reduced-motion: reduce){
-      a.btn{ transition:none; }
-      a.btn:hover{ transform:none; }
+    .meta-row a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
     }
+    .meta-row a:hover { color: white; }
+
+    .location {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em; /* Luxury Tracking */
+      color: rgba(255,255,255,0.4);
+      margin-top: 16px;
+    }
+
+    /* ICONS (SVG) */
+    .icon { width: 18px; height: 18px; fill: currentColor; }
+
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="panel">
-      <div class="top">
-        <div>
-          <div class="mark">MK</div>
-          <h1>Maciek Klein</h1>
-          <p class="role">
-            <b>Business Development &amp; Strategic Partnerships</b><br/>
-            Enterprise GTM · Tech-enabled products · Regulated markets
-          </p>
+  <div class="ambient-light"></div>
 
-          <div class="chips" aria-label="Focus areas">
-            <span class="chip">MedTech</span>
-            <span class="chip">Health Data</span>
-            <span class="chip">Partnerships</span>
-            <span class="chip">Go-to-market</span>
-          </div>
-        </div>
+  <div class="wrap">
+    <div class="card">
+      
+      <div class="header">
+        <div class="monogram">MK</div>
+        <h1>Maciek Klein</h1>
+        <p class="role-title">Business Development &amp; Strategy</p>
+      </div>
+
+      <div class="tags">
+        <span class="tag">MedTech</span>
+        <span class="tag">Enterprise</span>
+        <span class="tag">GTM</span>
+        <span class="tag">Partnerships</span>
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="./contact.vcf">Save contact (vCard)</a>
+        <a class="btn primary" href="./contact.vcf">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          Save Contact
+        </a>
 
-        <a class="btn"
-           href="https://www.linkedin.com/in/maciek-klein/?utm_source=businesscard&utm_medium=qr&utm_campaign=connect"
-           target="_blank"
-           rel="noopener">
-          Open LinkedIn
+        <a class="btn secondary" href="https://www.linkedin.com/in/maciek-klein/" target="_blank">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn Profile
         </a>
       </div>
 
-      <div class="meta">
-        Berlin, Germany · <a href="mailto:maciekklein@gmail.com">maciekklein@gmail.com</a> ·
-        <a href="tel:+4917646540346">+49 176 46540346</a>
-        <span class="tiny">If you scanned a QR: you’re in the right place.</span>
+      <div class="footer">
+        <div class="meta-row">
+          <a href="mailto:maciekklein@gmail.com">Email</a>
+          <span>•</span>
+          <a href="tel:+4917646540346">Phone</a>
+        </div>
+        <div class="location">BERLIN • EU • GLOBAL</div>
       </div>
+
     </div>
   </div>
 </body>
