@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maciek Klein — Connect</title>
-  <meta name="description" content="Business Development & Strategic Partnerships. Save contact." />
+  <title>Maciek Klein — Venture Builder</title>
+  <meta name="description" content="Commercial Scaling & Venture Building. Scaling MedTech from Zero to Profitability." />
   <meta name="robots" content="noimageindex" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 
   <style>
     :root {
-      /* PALETTE: Deep Obsidian & Electric Cobalt */
+      /* PALETTE: Deep Obsidian & VC "Trust" Blue */
       --bg-dark: #05070A;
       --bg-navy: #0F172A;
       --card-bg: rgba(18, 24, 38, 0.7);
@@ -21,7 +21,7 @@
       --text-main: #FFFFFF;
       --text-muted: #94A3B8;
       
-      /* The "Accelerator" Blue - Vibrant but controlled */
+      /* Accent: Electric Cobalt (High Velocity) */
       --accent: #3B82F6; 
       --accent-glow: rgba(59, 130, 246, 0.4);
       
@@ -44,10 +44,10 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      overflow: hidden; /* Prevents scroll on mobile */
+      overflow: hidden;
     }
 
-    /* Cinematic Background Mesh */
+    /* Cinematic Background - Subtle Depth */
     .ambient-light {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -59,24 +59,23 @@
 
     .wrap {
       width: 100%;
-      max-width: 420px; /* Tighter width for mobile elegance */
+      max-width: 420px;
       perspective: 1000px;
     }
 
-    /* THE CARD: Glassmorphism 2.0 */
+    /* THE CARD: Glassmorphism */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border-light);
-      border-top: 1px solid var(--border-highlight); /* Light hitting top edge */
+      border-top: 1px solid var(--border-highlight);
       border-radius: var(--radius);
       padding: 32px 24px;
       backdrop-filter: blur(var(--glass-blur));
       -webkit-backdrop-filter: blur(var(--glass-blur));
       box-shadow: 
         0 20px 40px -10px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(255,255,255,0.05) inset; /* Inner glow */
+        0 0 0 1px rgba(255,255,255,0.05) inset;
       
-      /* Entry Animation */
       opacity: 0;
       transform: translateY(20px);
       animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -120,7 +119,7 @@
       letter-spacing: 0.01em;
     }
 
-    /* TECH TAGS */
+    /* VC-OPTIMIZED TAGS */
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -132,13 +131,20 @@
     .tag {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.08em; /* Premium Wide Tracking */
+      letter-spacing: 0.05em;
       font-weight: 600;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.9);
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       padding: 6px 12px;
       border-radius: 100px;
+    }
+    
+    /* Highlight the "Profitability" tag subtly */
+    .tag.highlight {
+      border-color: rgba(59, 130, 246, 0.3);
+      background: rgba(59, 130, 246, 0.1);
+      color: #60A5FA;
     }
 
     /* ACTIONS */
@@ -159,7 +165,6 @@
       overflow: hidden;
     }
 
-    /* Primary Button: The "Accelerator" Glow */
     .btn.primary {
       background: var(--accent);
       color: white;
@@ -172,7 +177,6 @@
       box-shadow: 0 8px 30px var(--accent-glow);
     }
 
-    /* Secondary Button */
     .btn.secondary {
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border-light);
@@ -211,12 +215,11 @@
     .location {
       font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.2em; /* Luxury Tracking */
+      letter-spacing: 0.2em;
       color: rgba(255,255,255,0.4);
       margin-top: 16px;
     }
 
-    /* ICONS (SVG) */
     .icon { width: 18px; height: 18px; fill: currentColor; }
 
   </style>
@@ -231,14 +234,14 @@
       <div class="header">
         <div class="monogram">MK</div>
         <h1>Maciek Klein</h1>
-        <p class="role-title">Business Development &amp; Strategy</p>
+        <p class="role-title">Commercial Scaling &amp; Venture Building</p>
       </div>
 
       <div class="tags">
+        <span class="tag">Series A Readiness</span>
+        <span class="tag">Revenue Arch</span>
         <span class="tag">MedTech</span>
-        <span class="tag">Enterprise</span>
-        <span class="tag">GTM</span>
-        <span class="tag">Partnerships</span>
+        <span class="tag highlight">Profitability</span>
       </div>
 
       <div class="actions">
