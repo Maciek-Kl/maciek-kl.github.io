@@ -1,2 +1,1 @@
-# Maciek-KI.github.io
-Maciek Contact Page
+# Maciek Klein | Digital Contact vCard
